@@ -1,0 +1,77 @@
+:root {
+  --ink: #17231f;
+  --muted: #71817b;
+  --line: #dce6e0;
+  --green: #126b4f;
+  --green-dark: #0b4836;
+  --mint: #dff3e9;
+  --paper: #fbfdfb;
+  --orange: #e98a46;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  color: var(--ink);
+  background: #e8f1ec;
+  font-family: "Manrope", sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  opacity: .45;
+  background-image: linear-gradient(rgba(18, 107, 79, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(18, 107, 79, .07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.app-shell { display: grid; min-height: 100vh; place-items: center; padding: 28px 18px; }
+.converter { width: min(100%, 500px); padding: clamp(25px, 6vw, 44px); background: var(--paper); border: 1px solid rgba(255,255,255,.8); box-shadow: 0 24px 70px rgba(30, 66, 50, .15); }
+.topbar { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.brand-mark { display: grid; width: 44px; height: 44px; place-items: center; color: white; background: var(--green); font: 500 24px "DM Mono", monospace; border-radius: 50%; }
+.eyebrow { margin: 0 0 4px; color: var(--orange); font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(26px, 6vw, 34px); line-height: 1.1; letter-spacing: -.8px; }
+h1 span { color: var(--muted); font-weight: 400; }
+.rate-strip { display: flex; align-items: center; justify-content: space-between; min-height: 64px; margin-bottom: 33px; padding: 14px 17px; color: var(--green-dark); background: var(--mint); }
+.rate-strip > div { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; }
+.status-dot { width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+.status-dot.loaded { background: #269b68; }
+.status-dot.error { background: #cf4f4f; }
+#rate-display { font: 500 18px "DM Mono", monospace; }
+.conversion-labels { display: grid; grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr); align-items: center; margin-bottom: 10px; }
+.conversion-labels label, .direction-label { color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+.direction-label { font-size: 9px; text-align: center; }
+.currency-row { display: grid; grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr); align-items: center; gap: 8px; }
+.currency-card { position: relative; min-width: 0; height: 126px; padding: 15px; border: 1px solid var(--line); background: white; }
+.input-card { border-color: #a9cfc0; box-shadow: 0 5px 16px rgba(18, 107, 79, .06); }
+.output-card { background: #eef8f3; }
+.currency-card strong { display: block; margin-top: 6px; color: var(--green); font: 500 11px "DM Mono", monospace; }
+.currency-symbol { color: var(--muted); font: 500 13px "DM Mono", monospace; }
+input { display: block; width: 100%; margin-top: 21px; border: 0; outline: 0; color: var(--ink); background: transparent; font: 500 22px "DM Mono", monospace; }
+input::placeholder { color: #b3c0ba; }
+.currency-card output { display: block; margin-top: 21px; color: var(--ink); font: 500 19px "DM Mono", monospace; overflow-wrap: anywhere; }
+.swap-button { display: grid; width: 42px; height: 42px; place-items: center; margin: 0; padding: 0; border: 1px solid var(--line); color: var(--green); background: var(--paper); font-size: 23px; line-height: 1; }
+.swap-button:hover { color: white; background: var(--green); transform: rotate(180deg); }
+button { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 57px; margin-top: 13px; padding: 0 18px 0 21px; border: 0; color: white; background: var(--green); cursor: pointer; font: 700 14px "Manrope", sans-serif; transition: background .2s, transform .2s; }
+button:hover { background: var(--green-dark); transform: translateY(-2px); }
+button:disabled { cursor: wait; opacity: .7; transform: none; }
+.button-arrow { font-size: 22px; font-weight: 400; }
+.error-message { margin: 10px 0 0; color: #b13d3d; font-size: 12px; }
+.result-panel { margin-top: 34px; padding: 20px; background: var(--green-dark); }
+.result-heading { display: flex; align-items: center; justify-content: space-between; color: #a9c6b8; font-size: 12px; font-weight: 700; }
+.result-icon { padding: 4px 7px; color: var(--green-dark); background: #c2e4d4; font: 500 10px "DM Mono", monospace; }
+#rate-equivalence { display: block; margin: 16px 0 7px; color: white; font: 500 clamp(25px, 7vw, 36px) "DM Mono", monospace; letter-spacing: -1px; overflow-wrap: anywhere; }
+.result-panel p { margin: 0; color: #a9c6b8; font-size: 11px; }
+footer { margin-top: 24px; color: var(--muted); font-size: 10px; text-align: center; }
+
+@media (max-width: 420px) {
+  .app-shell { padding: 14px; }
+  .converter { padding: 24px 20px; }
+  .rate-strip { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .currency-card { padding: 13px 11px; }
+  .currency-card output { font-size: 16px; }
+}

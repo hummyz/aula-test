@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Conversor Dólar e Real</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<main class="app-shell">
+		<section class="converter" aria-labelledby="page-title">
+			<header class="topbar">
+				<div class="brand-mark" aria-hidden="true">$</div>
+				<div>
+					<p class="eyebrow">Câmbio em tempo real</p>
+					<h1 id="page-title">Dólar <span>e</span> Real</h1>
+				</div>
+			</header>
+
+			<div class="rate-strip" aria-live="polite">
+				<div>
+					<span class="status-dot" id="status-dot"></span>
+					<span id="rate-status">Buscando cotação...</span>
+				</div>
+				<strong id="rate-display">--</strong>
+			</div>
+
+			<form id="converter-form" class="conversion-form">
+				<div class="conversion-labels">
+					<label for="amount">Você envia</label>
+					<span class="direction-label">conversão</span>
+					<span class="direction-label">você recebe</span>
+				</div>
+				<div class="currency-row">
+					<div class="currency-card input-card">
+						<span class="currency-symbol" id="from-symbol">US$</span>
+						<strong id="from-code">USD</strong>
+						<input id="amount" name="amount" type="number" min="0" step="0.01" placeholder="0,00" inputmode="decimal" required>
+					</div>
+					<button type="button" class="swap-button" id="swap-button" aria-label="Trocar dólar e real" title="Trocar moedas">&#8646;</button>
+					<div class="currency-card output-card">
+						<span class="currency-symbol" id="to-symbol">R$</span>
+						<strong id="to-code">BRL</strong>
+						<output id="result" aria-label="Valor convertido">0,00</output>
+					</div>
+				</div>
+				<button type="submit" id="convert-button">
+					<span>Converter agora</span>
+					<span class="button-arrow" aria-hidden="true">&#8594;</span>
+				</button>
+				<p class="error-message" id="error-message" role="alert" hidden></p>
+			</form>
+
+			<section class="result-panel" aria-live="polite">
+				<div class="result-heading">
+					<span id="result-title">1 dólar equivale a</span>
+					<span class="result-icon" id="result-code" aria-hidden="true">BRL</span>
+				</div>
+				<strong id="rate-equivalence">--</strong>
+				<p id="result-detail">Digite um valor para começar</p>
+			</section>
+
+			<footer>Fonte: AwesomeAPI &middot; Atualização automática ao abrir</footer>
+		</section>
+	</main>
+	<script src="scripts.js"></script>
+</body>
+</html>
